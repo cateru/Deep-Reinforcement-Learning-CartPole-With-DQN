@@ -113,7 +113,7 @@ class Trainer:
 
             rewards.append(total_reward)
 
-            print(f"Test {test_num + 1} | Seed {seed} | Reward {total_reward}")
+            # print(f"Test {test_num + 1} | Seed {seed} | Reward {total_reward}")
 
         print("\nMean Test Reward:", np.mean(rewards))
         print("Std Reward:", np.std(rewards))
