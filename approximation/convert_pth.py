@@ -37,7 +37,7 @@ def numpy_to_pth(flat_array, metadata, reference_model_path, output_path):
         reshaped = values.reshape(info["shape"])
         tensor = torch.tensor(reshaped, dtype=reference_state_dict[key].dtype)
         new_state_dict[key] = tensor
-        torch.save(new_state_dict, output_path)
+    torch.save(new_state_dict, output_path)
     logger.info(f"Saved reconstructed model: {output_path}")
 
 
