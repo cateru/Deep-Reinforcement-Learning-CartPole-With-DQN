@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 def approximate_value(target, approximator):
     if abs(target) < 1e-6:
         return 0.0
+    approximator.generate_noise()
     ladder = approximator.solve(target=target)
     # if ladder is None:
     #     logger.warning(f"No ladder found for target={target:.6f}")
