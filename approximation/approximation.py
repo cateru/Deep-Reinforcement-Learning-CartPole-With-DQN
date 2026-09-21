@@ -11,14 +11,14 @@ logger = logging.getLogger(__name__)
 class TargetSolver:
     def __init__(self, N, std_noise, std_d2d, seed=34):
         self.rng = np.random.default_rng(seed)
-        self.pulses = np.arange(1, 15001)
         self.N = N        
         self.std_noise = std_noise
         self.std_d2d = std_d2d
 
     def generate_noise(self):
+        self.pulses = np.arange(1, 15001)
         self.d2d_a = self.rng.normal(loc=1, scale=self.std_d2d, size=self.N)
-        self.d2d_b = self.rng.normal(loc=1, scale=self.std_d2d, size=self.N)
+        self.d2d_b = self.rng.normal(loc=0, scale=self.std_d2d, size=self.N)
         self.d2d_c = self.rng.normal(loc=1, scale=self.std_d2d, size=self.N)
         self.random_noise = self.rng.normal(loc=1, scale=self.std_noise, size=(self.N, len(self.pulses) + 1))
         self.GP = np.array([[self.conductance_P(p, device=i) for p in self.pulses] for i in range(self.N)])
